@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-gke
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-gke
+  template:
+    metadata:
+      labels:
+        app: hello-gke
+    spec:
+      containers:
+        - name: hello-gke-container
+          image: gcr.io/reflected-coder-397313/hello-gke:latest
+          ports:
+            - containerPort: 8080
